@@ -1,4 +1,5 @@
 // components/layout.js
+import "./globals.css"
 import Sidebar from './components/sidebar';
 import MainContent from './components/maincontent';
 
