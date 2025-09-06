@@ -9,13 +9,15 @@ function Videoplayer() {
         <span className="text-xl text-white">VIDEO</span>
         
         {/* Control Icons */}
-        <div className="absolute top-4 right-4 space-x-2">
-          {[...Array(4)].map((_, i) => (
-            <div 
-              key={i}
-              className="w-8 h-8 bg-gray-800 rounded cursor-pointer hover:bg-gray-700"
-            />
-          ))}
+        <div className="absolute aspect-video border-4 border-white w-full h-15/100 flex place-self-bottom justify-between items-center bottom-0 left-0 right-0">
+          <div className="flex items-center">
+            {[...Array(4)].map((_, i) => (
+              <div 
+                key={i}
+                className="w-8 h-8 bg-white rounded cursor-pointer hover:bg-gray-500"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

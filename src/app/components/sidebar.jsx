@@ -1,13 +1,12 @@
 'use client'
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function Sidebar() {
-  const [IsClicked, setIsClicked] = useState(false);
+  const [CurrentClicked, setCurrentClicked] = useState(0);
 
   const handleClick = (unit) => {
-    console.log(`Clicked on this ${unit.id}`);
-    setIsClicked(!IsClicked);
+    setCurrentClicked(unit.id);
+    console.log(CurrentClicked);
   };
 
   const units = [
@@ -18,10 +17,8 @@ function Sidebar() {
 
   return (
     <aside className="w-64 bg-white border-r shadow-lg overflow-y-auto">
-      {/* Header */}
       <div className="p-6 border-b">
         <h1 className="text-2xl font-bold text-blue-600">SHUAQ</h1>
-        {/* Search Bar */}
         <input
           type="text"
           placeholder="Search..."
@@ -29,23 +26,21 @@ function Sidebar() {
         />
       </div>
 
-      {/* Topic Section */}
       <section className="p-6">
         <h2 className="text-lg font-semibold mb-4">TOPIC 1:</h2>
         <p className="text-gray-600 mb-6">
           Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.
         </p>
 
-        {/* Units */}
         <div className="space-y-2">
           {units.map((unit) => (
             <div
               key={unit.id}
-              className="p-4 border-2 rounded-md cursor-pointer hover:bg-gray-200 transition-colors"
-              onClick={() =>handleClick(unit)}
+              className={`p-4 border-2 border-gray-300 rounded-md cursor-pointer transition-colors ${CurrentClicked == unit.id ? "bg-blue-600 hover:bg-blue-400" : "bg-white-200 hover:bg-gray-200"}`}
+              onClick={() => handleClick(unit)}
             >
-              <h3 className="font-bold">{unit.title}</h3>
-              <p className="text-sm text-gray-600 mt-2">{unit.description}</p>
+              <h3 className={`font-bold transition-colors ${CurrentClicked == unit.id ? "text-white" : "text-black"}`}>{unit.title}</h3>
+              <p className={`text-gray-600 mt-2 text-sm transition-colors ${CurrentClicked == unit.id ? "text-white" : "text-gray-600"}`}>{unit.description}</p>
             </div>
           ))}
         </div>
